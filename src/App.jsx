@@ -1,4 +1,4 @@
-// src/App.jsx
+
 import React from 'react'
 import UserList from './components/UserList'
 

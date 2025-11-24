@@ -24,7 +24,6 @@ function generateFakeUsers(count, startId) {
 }
 
 export default function UserList(){
-// useFetch demonstrates useReducer internally and returns {loading,error,data}
 const { loading, error, data: apiUsers } = useFetch(
   "https://jsonplaceholder.typicode.com/users",
   []
@@ -39,24 +38,15 @@ const users = useMemo(() => {
 
 
 
-// Local UI state using useState
-// useState is imported as a named import: `import React, { useState } from 'react'` or `import { useState } from 'react'`.
-// We import useState in {} because it's a named export from the React package (not the default export).
-// Example: `import React, { useState } from 'react'` -> React is default, useState is named.
-
 
 const [query, setQuery] = useState('')
 const [selectedUser, setSelectedUser] = useState(null)
 const [isModalOpen, setModalOpen] = useState(false)
-const inputRef = useRef(null) // will point to search input DOM node
+const inputRef = useRef(null) 
 
-
-// Pagination state
 const [currentPage, setCurrentPage] = useState(1)
 const perPage = 6
 
-
-// useMemo to avoid recalculating filtered list on every render unless `users` or `query` changes
 const filteredUsers = useMemo(() => {
 if(!users) return []
 const q = query.trim().toLowerCase()
@@ -65,7 +55,6 @@ return users.filter(u => u.name.toLowerCase().includes(q) || u.email.toLowerCase
 }, [users, query])
 
 
-// Derived values for pagination
 const totalPages = Math.max(1, Math.ceil(filteredUsers.length / perPage))
 const pageUsers = useMemo(() => {
 const start = (currentPage - 1) * perPage
@@ -74,13 +63,11 @@ return filteredUsers.slice(start, start + perPage)
 
 
 useEffect(() => {
-// focus the search input on mount
 inputRef.current?.focus()
-}, []) // empty dependency array -> runs once on mount
+}, []) 
 
 
 useEffect(() => {
-// if query changes, reset to page 1
 setCurrentPage(1)
 }, [query])
 

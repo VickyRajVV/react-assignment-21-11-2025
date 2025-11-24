@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-// Controlled search input passed up via onSearch
+
 export default function SearchBar({ value, onChange, inputRef }){
 return (
 <input

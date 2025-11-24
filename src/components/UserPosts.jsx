@@ -16,7 +16,7 @@ fetchPostsByUser(userId)
 .then(data => setPosts(data))
 .catch(err => { setError(err.message); onError && onError(err.message) })
 .finally(() => setLoading(false))
-}, [userId]) // dependency array ensures fetch runs when userId changes
+}, [userId]) 
 
 
 if(loading) return <div className="loading">Loading posts...</div>

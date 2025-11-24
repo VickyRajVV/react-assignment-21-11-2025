@@ -1,7 +1,5 @@
 import { useEffect, useReducer } from 'react'
 
-
-// A small reducer-based fetch hook to demonstrate useReducer, actions and dispatch
 const initialState = { loading: false, error: null, data: null }
 
 
